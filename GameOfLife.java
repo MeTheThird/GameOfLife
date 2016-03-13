@@ -1,6 +1,6 @@
 package GameOfLife;
 
-import apcs.Window;
+import apcs.*;
 
 public class GameOfLife {
 	
@@ -18,7 +18,14 @@ public class GameOfLife {
 			draw();
 			move();
 			mouse();
+			pulsar();
+			pentadecathlon();
+			glider();
+			if (Window.key.pressed("c")) {
+				clear();
+			}
 			Window.frame(100);
+			
 		}
 	}
 	
@@ -27,20 +34,112 @@ public class GameOfLife {
 			int x = Window.mouse.getX() / size;
 			int y = Window.mouse.getY() / size;
 			
-			if (Window.key.pressed("g")) {
-				grid[x][y] = true;
-				grid[x + 1][y] = true;
-				grid[x][y + 1] = true;
-				grid[x - 1][y + 1] = true;
-				grid[x - 1][y - 1] = true;
-			}
-			if (Window.key.pressed("p")) {
-				
-			}
-			else {
 				grid[x][y] = ! grid[x][y];
+		}
+	}
+	
+	public static void glider() {
+		int x = Window.mouse.getX() / size;
+		int y = Window.mouse.getY() / size;
+		if (Window.key.pressed("g") && x > 0 && x < width - 1 && y > 0 && y < height - 1) {
+		
+			grid[x][y] = true;
+			grid[x + 1][y] = true;
+			grid[x][y + 1] = true;
+			grid[x - 1][y + 1] = true;
+			grid[x - 1][y - 1] = true;
+		}
+	}
+	
+	public static void clear() {
+		for (int x = 0 ; x < width ; x++) {
+			for (int y = 0 ; y < height ; y++) {
+				grid[x][y] = false;
 			}
 		}
+	}
+	
+	public static void pentadecathlon() {
+		int x = Window.mouse.getX() / size;
+		int y = Window.mouse.getY() / size;
+		if (Window.key.pressed("e") && x > 4 && x < width - 4 && y > 0 && y < height - 1) {
+		
+			grid[x][y] = true;
+			grid[x + 1][y] = true;
+			grid[x - 1][y] = true;
+			grid[x - 2][y] = true;
+			grid[x + 2][y - 1] = true;
+			grid[x + 2][y + 1] = true;
+			grid[x + 3][y] = true;
+			grid[x + 4][y] = true;
+			grid[x - 3][y + 1] = true;
+			grid[x - 3][y - 1] = true;
+			grid[x - 4][y] = true;
+			grid[x - 5][y] = true;
+		}
+	}
+	
+	public static void pulsar() {
+		int x = Window.mouse.getX() / size;
+		int y = Window.mouse.getY() / size;
+		if (Window.key.pressed("p") && x > 5 && x < width - 6 && y > 5 && y < height - 6) {
+		
+			grid[x + 2][y - 1] = true;
+			grid[x + 3][y - 1] = true;
+			grid[x + 4][y - 1] = true;
+			grid[x + 6][y - 2] = true;
+			grid[x + 6][y - 3] = true;
+			grid[x + 6][y - 4] = true;
+			grid[x + 1][y - 2] = true;
+			grid[x + 1][y - 3] = true;
+			grid[x + 1][y - 4] = true;
+			grid[x + 2][y - 6] = true;
+			grid[x + 3][y - 6] = true;
+			grid[x + 4][y - 6] = true;
+			
+			
+			grid[x - 2][y - 1] = true;
+			grid[x - 3][y - 1] = true;
+			grid[x - 4][y - 1] = true;
+			grid[x - 6][y - 2] = true;
+			grid[x - 6][y - 3] = true;
+			grid[x - 6][y - 4] = true;
+			grid[x - 1][y - 2] = true;
+			grid[x - 1][y - 3] = true;
+			grid[x - 1][y - 4] = true;
+			grid[x - 2][y - 6] = true;
+			grid[x - 3][y - 6] = true;
+			grid[x - 4][y - 6] = true;
+			
+			
+			grid[x - 2][y + 1] = true;
+			grid[x - 3][y + 1] = true;
+			grid[x - 4][y + 1] = true;
+			grid[x - 6][y + 2] = true;
+			grid[x - 6][y + 3] = true;
+			grid[x - 6][y + 4] = true;
+			grid[x - 1][y + 2] = true;
+			grid[x - 1][y + 3] = true;
+			grid[x - 1][y + 4] = true;
+			grid[x - 2][y + 6] = true;
+			grid[x - 3][y + 6] = true;
+			grid[x - 4][y + 6] = true;
+			
+			
+			grid[x + 2][y + 1] = true;
+			grid[x + 3][y + 1] = true;
+			grid[x + 4][y + 1] = true;
+			grid[x + 6][y + 2] = true;
+			grid[x + 6][y + 3] = true;
+			grid[x + 6][y + 4] = true;
+			grid[x + 1][y + 2] = true;
+			grid[x + 1][y + 3] = true;
+			grid[x + 1][y + 4] = true;
+			grid[x + 2][y + 6] = true;
+			grid[x + 3][y + 6] = true;
+			grid[x + 4][y + 6] = true;
+		}
+		
 	}
 	
 	public static void initialize() {
