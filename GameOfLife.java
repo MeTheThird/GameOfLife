@@ -6,8 +6,8 @@ public class GameOfLife {
 	
 	static boolean [][] grid;
 	static int size = 10;
-	static int width = 50;
-	static int height = 50;
+	static int width = 100;
+	static int height = 100;
 
 	public static void main(String[] args) {
 		Window.size(width * size, height * size);
@@ -21,6 +21,9 @@ public class GameOfLife {
 			pulsar();
 			pentadecathlon();
 			glider();
+			glidergun();
+			blinker();
+			square();
 			if (Window.key.pressed("c")) {
 				clear();
 			}
@@ -35,6 +38,81 @@ public class GameOfLife {
 			int y = Window.mouse.getY() / size;
 			
 				grid[x][y] = ! grid[x][y];
+		}
+	}
+	
+	public static void blinker() {
+		int x = Window.mouse.getX() / size;
+		int y = Window.mouse.getY() / size;
+		
+		if(Window.key.pressed("b") && x > 0 && x < width - 1){
+			grid[x][y] = true;
+			grid[x + 1][y] = true;
+			grid[x - 1][y] = true;
+		}
+	}
+	
+	public static void square() {
+		int x = Window.mouse.getX() / size;
+		int y = Window.mouse.getY() / size;
+		
+		if (Window.key.pressed("s") && x < width - 1 && y < height - 1 ) {
+			grid[x][y] = true;
+			grid[x + 1][y] = true;
+			grid[x + 1][y + 1] = true;
+			grid[x][y + 1] = true;
+		}
+	}
+	
+	public static void glidergun() {
+		int x = Window.mouse.getX() / size;
+		int y = Window.mouse.getY() / size;
+		if (Window.key.pressed("u") && x > 17 && x < width - 17 && y > 4 && y < height - 3) {
+			grid[x - 1][y] = true;
+			grid[x - 2][y] = true;
+			grid[x - 2][y + 1] = true;
+			grid[x - 2][y - 1] = true;
+			grid[x - 3][y + 2] = true;
+			grid[x - 3][y - 2] = true;
+			grid[x - 4][y] = true;
+			
+			
+			grid[x - 5][y - 3] = true;
+			grid[x - 5][y + 3] = true;
+			grid[x - 6][y - 3] = true;
+			grid[x - 6][y + 3] = true;
+			grid[x - 7][y + 2] = true;
+			grid[x - 7][y - 2] = true;
+			grid[x - 8][y + 1] = true;
+			grid[x - 8][y] = true;
+			grid[x - 8][y - 1] = true;
+			
+			
+			grid[x - 17][y] = true;
+			grid[x - 17][y - 1] = true;
+			grid[x - 18][y] = true;
+			grid[x - 18][y - 1] = true;
+			
+			
+			grid[x + 2][y - 1] = true;
+			grid[x + 2][y - 2] = true;
+			grid[x + 2][y - 3] = true;
+			grid[x + 3][y - 1] = true;
+			grid[x + 3][y - 2] = true;
+			grid[x + 3][y - 3] = true;
+			grid[x + 4][y - 4] = true;
+			grid[x + 4][y] = true;
+			grid[x + 6][y] = true;
+			grid[x + 6][y + 1] = true;
+			grid[x + 6][y - 4] = true;
+			grid[x + 6][y - 5] = true;
+			
+			
+			grid[x + 16][y - 2] = true;
+			grid[x + 16][y - 3] = true;
+			grid[x + 17][y - 2] = true;
+			grid[x + 17][y - 3] = true;
+
 		}
 	}
 	
@@ -198,7 +276,7 @@ public class GameOfLife {
 					count++;
 				}
 				
-				if (x > 0 && y < height - 1 &&grid[x - 1][y + 1]) {
+				if (x > 0 && y < height - 1 && grid[x - 1][y + 1]) {
 					count++;
 				}
 				
