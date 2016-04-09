@@ -6,8 +6,8 @@ public class GameOfLife {
 	
 	static boolean [][] grid;
 	static int size = 10;
-	static int width = 100;
-	static int height = 100;
+	static int width = 50;
+	static int height = 50;
 
 	public static void main(String[] args) {
 		Window.size(width * size, height * size);
