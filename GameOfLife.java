@@ -6,7 +6,7 @@ public class GameOfLife {
 	
 	static boolean [][] grid;
 	static int size = 10;
-	static int width = 50;
+	static int width = 100;
 	static int height = 50;
 
 	public static void main(String[] args) {
@@ -260,15 +260,15 @@ public class GameOfLife {
 					count++;
 				}
 				
-				if (x < height - 1 && y > 0 && grid[x + 1][y - 1]) {
+				if (x < width - 1 && y > 0 && grid[x + 1][y - 1]) {
 					count++;
 				}
 				
-				if (x < height - 1 && grid[x + 1][y]) {
+				if (x < width - 1 && grid[x + 1][y]) {
 					count++;
 				}
 				
-				if (x < height - 1 && y < height - 1 && grid[x + 1][y + 1]) {
+				if (x < width - 1 && y < height - 1 && grid[x + 1][y + 1]) {
 					count++;
 				}
 				
